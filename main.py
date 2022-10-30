@@ -1,6 +1,7 @@
 from random import choice
 from estate import Apartment, House, Store
 from advertisment import ApartmentSell
+from real_state.advertisment import HouseSell, ApartmentRent, HouseRent
 from user import User
 from region import Region
 
@@ -29,7 +30,7 @@ if __name__ == '__main__':
         address='Some text...'
     )
 
-    apt1.show_description()
+    # apt1.show_description()
 
     house1 = House(
         has_yard=True,
@@ -42,7 +43,7 @@ if __name__ == '__main__':
         address='Some text ...'
     )
 
-    house1.show_description()
+    # house1.show_description()
 
     store1 = Store(
         user=User.object_list[-1],
@@ -53,7 +54,7 @@ if __name__ == '__main__':
         address='Some text ...'
     )
 
-    store1.show_description()
+    # store1.show_description()
 
     # Create advertisment
     apartment_sell = ApartmentSell(
@@ -72,3 +73,54 @@ if __name__ == '__main__':
     )
 
     apartment_sell.show_detail()
+
+    apartment_rent = ApartmentRent(
+        user=User.object_list[0],
+        area=80,
+        rooms_count=2,
+        built_year=1393,
+        has_elevator=True,
+        has_parking=True,
+        floor=2,
+        region=reg1,
+        convertable=False,
+        initial_price=100,
+        monthly_price=3.5,
+        address='Some text ...',
+    )
+
+    house_rent = HouseRent(
+        has_yard=True,
+        floors_count=1,
+        user=User.object_list[2],
+        area=400,
+        rooms_count=6,
+        built_year=1370,
+        region=reg1,
+        address='Some text ...',
+        convertable=False,
+        initial_price=130,
+        monthly_price=5.5,
+    )
+
+    house_sell = HouseSell(
+        has_yard=True,
+        floors_count=1,
+        user=User.object_list[2],
+        area=400,
+        rooms_count=6,
+        built_year=1370,
+        region=reg1,
+        address='Some text ...',
+        price_per_meter=10,
+        discountable=True,
+        convertable=False
+    )
+
+    house_sell.show_detail()
+
+    search_result = ApartmentSell.manager.search(region=reg1)
+    print("Result :", search_result)
+
+    print(HouseRent.manager.get(region=reg1))
+    

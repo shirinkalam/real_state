@@ -2,28 +2,35 @@ from abc import ABC, abstractmethod
 
 from estate import Apartment, House, Store
 from deal import Rent, Sell
+from real_state.base import BaseClass
 
 
-class ApartmentSell(Apartment, Sell):
+class ApartmentSell(BaseClass, Apartment, Sell):
+    def show_detail(self):
+        self.show_description()
+        self.show_price()
+
+    def __str__(self):
+        pass
+
+
+class ApartmentRent(BaseClass, Apartment, Rent):
+    pass
+
+
+class HouseSell(BaseClass, House, Sell):
     def show_detail(self):
         self.show_description()
         self.show_price()
 
 
-class ApartmentRent(Apartment, Rent):
+class HouseRent(BaseClass, House, Rent):
     pass
 
 
-class HouseSell(House, Sell):
+class StoreSell(BaseClass, Store, Sell):
     pass
 
 
-class HouseRent(House, Rent):
-    pass
-
-
-class StoreSell(Store, Sell):
-    pass
-
-class StoreRent(Store, Rent):
+class StoreRent(BaseClass, Store, Rent):
     pass
