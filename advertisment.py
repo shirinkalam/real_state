@@ -1,5 +1,4 @@
 from abc import ABC, abstractmethod
-
 from estate import Apartment, House, Store
 from deal import Rent, Sell
 from real_state.base import BaseClass
@@ -15,7 +14,9 @@ class ApartmentSell(BaseClass, Apartment, Sell):
 
 
 class ApartmentRent(BaseClass, Apartment, Rent):
-    pass
+    def show_detail(self):
+        self.show_description()
+        # self.show_price()
 
 
 class HouseSell(BaseClass, House, Sell):
@@ -25,12 +26,18 @@ class HouseSell(BaseClass, House, Sell):
 
 
 class HouseRent(BaseClass, House, Rent):
-    pass
+    def show_detail(self):
+        self.show_description()
+        # self.show_price()
 
 
 class StoreSell(BaseClass, Store, Sell):
-    pass
+    def show_detail(self):
+        self.show_description()
+        self.show_price()
 
 
 class StoreRent(BaseClass, Store, Rent):
-    pass
+    def show_detail(self):
+        self.show_description()
+        # self.show_price()
