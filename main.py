@@ -123,4 +123,4 @@ if __name__ == '__main__':
     print("Result :", search_result)
 
     print(HouseRent.manager.get(region=reg1))
-    
+
